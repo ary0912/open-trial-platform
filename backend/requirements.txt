@@ -10,3 +10,4 @@ passlib[bcrypt]
 pytest
 alembic
 python-dotenv
+python-multipart
