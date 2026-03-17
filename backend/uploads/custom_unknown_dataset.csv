@@ -1,0 +1,6 @@
+participant_id,visit_date,sleep_hours,stress_level,coffee_intake,mood
+1,2025-01-01,7,Low,2,Happy
+2,2025-01-01,5,High,4,Anxious
+3,2025-01-02,6,Medium,3,Neutral
+4,2025-01-02,8,Low,1,Happy
+5,2025-01-03,4,High,5,Stressed

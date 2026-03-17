@@ -1,0 +1,17 @@
+participant_id,visit_date,gender,blood_pressure,cholesterol,glucose,diabetes,smoking_status,bmi,heart_rate
+1,2025-01-01,Male,120,180,90,No,Non-smoker,22.5,72
+1,2025-02-01,Male,125,185,95,No,Non-smoker,22.8,74
+2,2025-01-01,Female,140,220,130,Yes,Smoker,28.2,80
+2,2025-02-01,Female,145,230,135,Yes,Smoker,28.5,82
+3,2025-01-01,Male,130,200,100,No,Occasional,25.0,76
+3,2025-03-01,Male,128,195,98,No,Occasional,24.7,75
+4,2025-01-01,Female,150,250,160,Yes,Smoker,30.5,88
+4,2025-02-01,Female,155,255,165,Yes,Smoker,31.0,90
+5,2025-01-01,Male,110,170,85,No,Non-smoker,21.0,68
+5,2025-02-01,Male,112,172,88,No,Non-smoker,21.2,70
+6,2025-01-01,Female,135,210,120,Yes,Occasional,27.5,78
+6,2025-03-01,Female,138,215,125,Yes,Occasional,27.8,79
+7,2025-01-01,Male,125,190,95,No,Non-smoker,23.5,73
+7,2025-02-01,Male,127,192,97,No,Non-smoker,23.7,74
+8,2025-01-01,Female,145,240,140,Yes,Smoker,29.5,85
+8,2025-02-01,Female,148,245,145,Yes,Smoker,29.8,87

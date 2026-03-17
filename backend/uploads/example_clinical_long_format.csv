@@ -1,0 +1,7 @@
+participant_id,visit_date,metric_name,value,unit
+1,2025-01-01,blood_pressure,120,mmHg
+1,2025-02-01,heart_rate,75,bpm
+2,2025-01-05,blood_pressure,130,mmHg
+2,2025-02-05,heart_rate,80,bpm
+3,2025-01-10,blood_pressure,118,mmHg
+3,2025-02-10,heart_rate,72,bpm

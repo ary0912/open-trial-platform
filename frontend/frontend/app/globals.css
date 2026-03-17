@@ -1,0 +1,140 @@
+@import "tailwindcss";
+
+/* ================================================= */
+/* DESIGN SYSTEM */
+/* ================================================= */
+
+:root {
+
+  /* BRAND */
+  --oxford-blue: #002147;
+  --oxford-accent: #2d6cdf;
+
+  /* LIGHT MODE */
+  --surface-background: #f6f7fb;
+  --surface-card: #ffffff;
+  --surface-glass: rgba(255,255,255,0.75);
+  --surface-subtle: #f9fafb;
+
+  --text-primary: #111827;
+  --text-secondary: #6b7280;
+  --text-muted: #9ca3af;
+
+  --border-soft: #e5e7eb;
+
+}
+
+/* ================================================= */
+/* 🌙 DARK MODE (AUTO FOR DASHBOARD) */
+/* ================================================= */
+
+.dark {
+
+  --surface-background: #020617;
+  --surface-card: rgba(15, 23, 42, 0.8);
+  --surface-glass: rgba(255,255,255,0.05);
+  --surface-subtle: rgba(255,255,255,0.03);
+
+  --text-primary: #ffffff;
+  --text-secondary: #cbd5f5;
+  --text-muted: #64748b;
+
+  --border-soft: rgba(255,255,255,0.08);
+
+}
+
+/* ================================================= */
+/* BASE */
+/* ================================================= */
+
+html,
+body {
+
+  background: var(--surface-background);
+  color: var(--text-primary);
+
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Inter",
+    "SF Pro Display",
+    sans-serif;
+
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ================================================= */
+/* SURFACE */
+/* ================================================= */
+
+.surface {
+
+  background: var(--surface-card);
+  border-radius: 16px;
+  border: 1px solid var(--border-soft);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+
+}
+
+.surface-glass {
+
+  backdrop-filter: blur(20px);
+
+  background: var(--surface-glass);
+
+  border-radius: 24px;
+
+  border: 1px solid var(--border-soft);
+
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+
+}
+
+/* ================================================= */
+/* METRICS */
+/* ================================================= */
+
+.metric-label {
+
+  font-size: 13px;
+  color: var(--text-secondary);
+
+}
+
+.metric-value {
+
+  font-size: 32px;
+  font-weight: 600;
+  margin-top: 4px;
+
+  color: var(--text-primary); /* ✅ FIX */
+}
+
+/* ================================================= */
+/* TABLE FIX */
+/* ================================================= */
+
+table {
+  color: var(--text-primary);
+}
+
+thead {
+  color: var(--text-secondary);
+}
+
+/* ================================================= */
+/* HOVER */
+/* ================================================= */
+
+.card {
+
+  transition: all 0.25s ease;
+
+}
+
+.card:hover {
+
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+
+}
