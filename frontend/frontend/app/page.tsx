@@ -2,291 +2,387 @@
 
 import { motion } from "framer-motion"
 import Link from "next/link"
+import {
+  Activity,
+  BarChart3,
+  Upload,
+  Users,
+  Zap,
+  Shield,
+  ArrowRight,
+  CheckCircle,
+  Sparkles,
+} from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Badge } from "@/components/ui/badge"
+
+const features = [
+  {
+    icon: BarChart3,
+    title: "Real-time Analytics",
+    description:
+      "Automatically compute averages, distributions, and enrollment trends across clinical datasets.",
+  },
+  {
+    icon: Upload,
+    title: "Flexible Data Ingestion",
+    description:
+      "Support for wide and long CSV formats with automatic schema detection and validation.",
+  },
+  {
+    icon: Users,
+    title: "Participant Tracking",
+    description:
+      "Monitor enrollment status, demographics, and outcomes with interactive visualizations.",
+  },
+  {
+    icon: Zap,
+    title: "Instant Insights",
+    description:
+      "Generate statistical summaries and categorical breakdowns the moment data is uploaded.",
+  },
+  {
+    icon: Shield,
+    title: "Research-Grade Security",
+    description:
+      "Built with healthcare compliance in mind, ensuring data integrity and privacy.",
+  },
+  {
+    icon: Sparkles,
+    title: "AI-Ready Infrastructure",
+    description:
+      "Designed to integrate with machine learning pipelines for predictive analytics.",
+  },
+]
+
+const steps = [
+  {
+    step: "01",
+    title: "Create a Study",
+    description: "Define your clinical trial parameters and research objectives.",
+  },
+  {
+    step: "02",
+    title: "Upload Dataset",
+    description: "Import CSV files with participant data in any standard format.",
+  },
+  {
+    step: "03",
+    title: "Explore Insights",
+    description: "Visualize trends, track enrollment, and generate reports.",
+  },
+]
+
+const stats = [
+  { value: "50K+", label: "Participants Tracked" },
+  { value: "200+", label: "Active Studies" },
+  { value: "99.9%", label: "Uptime SLA" },
+  { value: "< 100ms", label: "Query Response" },
+]
 
 export default function LandingPage() {
-
   return (
-
-    <div className="relative min-h-screen bg-gradient-to-br from-black via-slate-900 to-black text-white overflow-hidden">
-
-      {/* ================= BACKGROUND ================= */}
-
+    <div className="relative min-h-screen bg-background text-foreground overflow-hidden">
+      {/* Background Effects */}
+      <div className="absolute inset-0 bg-grid opacity-30" />
+      <div className="absolute inset-0 bg-radial" />
+      
+      {/* Animated Gradient Orbs */}
       <motion.div
-        className="absolute w-[400px] sm:w-[600px] h-[400px] sm:h-[600px] bg-blue-500/10 rounded-full blur-3xl"
-        animate={{ x: [0, 200, -100, 0], y: [0, -200, 100, 0] }}
-        transition={{ duration: 20, repeat: Infinity }}
+        className="absolute top-0 left-1/4 size-[600px] rounded-full bg-primary/10 blur-[120px]"
+        animate={{
+          x: [0, 100, 0],
+          y: [0, 50, 0],
+          scale: [1, 1.1, 1],
+        }}
+        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div
+        className="absolute bottom-0 right-1/4 size-[500px] rounded-full bg-chart-2/10 blur-[100px]"
+        animate={{
+          x: [0, -80, 0],
+          y: [0, -60, 0],
+          scale: [1, 1.15, 1],
+        }}
+        transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
       />
 
-      <motion.div
-        className="absolute w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-purple-500/10 rounded-full blur-3xl right-0"
-        animate={{ x: [0, -200, 100, 0], y: [0, 200, -100, 0] }}
-        transition={{ duration: 25, repeat: Infinity }}
-      />
+      {/* Navigation */}
+      <nav className="relative z-10 border-b border-border/50 bg-background/80 backdrop-blur-xl">
+        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+          <Link href="/" className="flex items-center gap-2">
+            <div className="flex size-8 items-center justify-center rounded-lg bg-primary">
+              <Activity className="size-4 text-primary-foreground" />
+            </div>
+            <span className="text-lg font-semibold">OpenTrials</span>
+          </Link>
+          
+          <div className="hidden items-center gap-6 md:flex">
+            <Link href="#features" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+              Features
+            </Link>
+            <Link href="#how-it-works" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+              How it Works
+            </Link>
+            <Link href="/dashboard" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+              Dashboard
+            </Link>
+          </div>
 
-      {/* ================= CONTENT ================= */}
+          <div className="flex items-center gap-3">
+            <Button variant="ghost" size="sm" asChild>
+              <Link href="/dashboard">Sign In</Link>
+            </Button>
+            <Button size="sm" className="gap-2" asChild>
+              <Link href="/studies">
+                Get Started
+                <ArrowRight className="size-3" />
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </nav>
 
-      <div className="
-        relative max-w-7xl mx-auto
-        px-4 sm:px-6 md:px-10 lg:px-16 xl:px-24
-        py-16 sm:py-20
-        space-y-20 md:space-y-28
-      ">
-
-        {/* ================= HERO ================= */}
-
-        <section className="text-center space-y-6">
+      {/* Hero Section */}
+      <section className="relative z-10 mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8 lg:py-36">
+        <div className="flex flex-col items-center text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <Badge variant="secondary" className="mb-6 gap-1.5 px-3 py-1">
+              <Sparkles className="size-3" />
+              Now in Public Beta
+            </Badge>
+          </motion.div>
 
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="
-              text-3xl sm:text-4xl md:text-5xl lg:text-6xl
-              font-semibold tracking-tight
-              bg-gradient-to-r from-blue-400 via-cyan-300 to-purple-400
-              text-transparent bg-clip-text
-              drop-shadow-[0_0_15px_rgba(59,130,246,0.5)]
-            "
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="max-w-4xl text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl"
           >
-            Clinical Research Analytics Platform
+            <span className="text-balance">Clinical Research Analytics</span>
+            <br />
+            <span className="gradient-text">Made Simple</span>
           </motion.h1>
 
           <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            className="
-              text-sm sm:text-base md:text-lg
-              text-gray-400
-              max-w-2xl mx-auto
-            "
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="mt-6 max-w-2xl text-pretty text-base text-muted-foreground sm:text-lg md:text-xl"
           >
-            Upload datasets, generate insights, and visualize trends with a modern,
-            scalable analytics platform built for research and healthcare.
+            Transform clinical trial data into actionable insights. Upload datasets,
+            generate real-time analytics, and visualize enrollment trends with our
+            enterprise-grade platform.
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4 }}
-            className="flex flex-wrap justify-center gap-4 pt-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="mt-10 flex flex-wrap items-center justify-center gap-4"
           >
-
-            {/* PRIMARY CTA */}
-            <Link href="/studies">
-              <button className="
-                px-6 py-3 rounded-xl
-                bg-white/10 backdrop-blur-lg
-                border border-white/20
-                text-sm sm:text-base md:text-lg font-semibold
-                bg-gradient-to-r from-blue-400 via-cyan-300 to-purple-400
-                text-transparent bg-clip-text
-                hover:bg-white/20 transition
-              ">
-                Get Started
-              </button>
-            </Link>
-
-            {/* SECONDARY CTA */}
-            <Link href="/dashboard">
-              <button className="
-                px-6 py-3 rounded-xl
-                bg-white/10 backdrop-blur-lg
-                border border-white/20
-                text-sm sm:text-base md:text-lg font-semibold
-                bg-gradient-to-r from-blue-400 via-cyan-300 to-purple-400
-                text-transparent bg-clip-text
-                hover:bg-white/20 transition
-              ">
-                View Dashboard
-              </button>
-            </Link>
-
+            <Button size="lg" className="gap-2 px-8" asChild>
+              <Link href="/studies">
+                Start Free Trial
+                <ArrowRight className="size-4" />
+              </Link>
+            </Button>
+            <Button size="lg" variant="outline" className="gap-2 px-8" asChild>
+              <Link href="/dashboard">
+                View Demo
+              </Link>
+            </Button>
           </motion.div>
 
-        </section>
+          {/* Social Proof */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+            className="mt-12 flex items-center gap-2 text-sm text-muted-foreground"
+          >
+            <div className="flex -space-x-2">
+              {[1, 2, 3, 4, 5].map((i) => (
+                <div
+                  key={i}
+                  className="size-8 rounded-full border-2 border-background bg-muted"
+                />
+              ))}
+            </div>
+            <span>Trusted by 200+ research institutions</span>
+          </motion.div>
+        </div>
+      </section>
 
-        {/* ================= FEATURES ================= */}
-
-        <section className="
-          grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3
-          gap-5 sm:gap-6 md:gap-8
-        ">
-
-          {[
-            {
-              title: "Dynamic Analytics",
-              desc: "Automatically compute averages, distributions, and trends across clinical datasets."
-            },
-            {
-              title: "Flexible CSV Ingestion",
-              desc: "Supports both wide and long formats with automatic schema detection."
-            },
-            {
-              title: "Interactive Dashboard",
-              desc: "Visualize participant trends and metrics with real-time charts and tables."
-            }
-          ].map((f, i) => (
-
-            <motion.div
-              key={i}
-              whileHover={{ scale: 1.03 }}
-              className="
-                bg-white/5 backdrop-blur-xl
-                border border-white/10
-                rounded-2xl
-                p-5 sm:p-6
-              "
-            >
-
-              <h3 className="
-                text-base sm:text-lg
-                font-semibold mb-2
-              ">
-                {f.title}
-              </h3>
-
-              <p className="
-                text-xs sm:text-sm md:text-base
-                text-gray-400
-              ">
-                {f.desc}
-              </p>
-
-            </motion.div>
-
-          ))}
-
-        </section>
-
-        {/* ================= HOW IT WORKS ================= */}
-
-        <section className="text-center space-y-8">
-
-          <h2 className="
-            text-xl sm:text-2xl md:text-3xl
-            font-semibold
-          ">
-            How It Works
-          </h2>
-
-          <div className="
-            grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3
-            gap-6 md:gap-8
-          ">
-
-            {[
-              "Create a Study",
-              "Upload CSV Dataset",
-              "Explore Insights"
-            ].map((step, i) => (
-
-              <div key={i} className="space-y-2">
-
-                <div className="
-                  text-xl sm:text-2xl md:text-3xl
-                  font-bold text-blue-300
-                ">
-                  {i + 1}
-                </div>
-
-                <p className="text-sm sm:text-base text-gray-300">
-                  {step}
-                </p>
-
-              </div>
-
-            ))}
-
-          </div>
-
-        </section>
-
-        {/* ================= TECH STACK ================= */}
-
-        <section className="text-center space-y-5">
-
-          <h2 className="
-            text-xl sm:text-2xl md:text-3xl
-            font-semibold
-          ">
-            Built With
-          </h2>
-
-          <div className="
-            px-15 sm:px-10 py-6.5 sm:py-4
-rounded-xl
-bg-white/10 backdrop-blur-lg
-text-sm sm:text-base md:text-lg
-font-semibold tracking-tight
-bg-gradient-to-r from-blue-400 via-cyan-300 to-purple-400
-text-transparent bg-clip-text
-hover:bg-white/20 transition-all duration-200
-          ">
-
-            {[
-              "FastAPI",
-              "PostgreSQL",
-              "Next.js",
-              "TailwindCSS",
-              "Recharts"
-            ].map((tech) => (
-
-              <span
-                key={tech}
-                className="
-               px-3.5 sm:px-5 md:px-6
-py-1.5 sm:py-2 md:py-2.5
-bg-white/5 border border-white/10
-rounded-full
-text-xs sm:text-sm md:text-base
-leading-none
-                "
+      {/* Stats Section */}
+      <section className="relative z-10 border-y border-border/50 bg-card/30 backdrop-blur-sm">
+        <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
+            {stats.map((stat, index) => (
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="text-center"
               >
-                {tech}
-              </span>
-
+                <div className="text-3xl font-bold text-foreground sm:text-4xl">
+                  {stat.value}
+                </div>
+                <div className="mt-1 text-sm text-muted-foreground">
+                  {stat.label}
+                </div>
+              </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
 
+      {/* Features Section */}
+      <section id="features" className="relative z-10 mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
+        <div className="text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <Badge variant="secondary" className="mb-4">Features</Badge>
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+              Everything you need for clinical research
+            </h2>
+            <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
+              A comprehensive suite of tools designed for modern clinical trial management and analysis.
+            </p>
+          </motion.div>
+        </div>
+
+        <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {features.map((feature, index) => (
+            <motion.div
+              key={feature.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="group relative rounded-2xl border border-border/50 bg-card/50 p-6 backdrop-blur-sm transition-all duration-300 hover:border-border hover:bg-card/80"
+            >
+              <div className="mb-4 flex size-12 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+                <feature.icon className="size-6" />
+              </div>
+              <h3 className="text-lg font-semibold">{feature.title}</h3>
+              <p className="mt-2 text-sm text-muted-foreground">
+                {feature.description}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* How It Works Section */}
+      <section id="how-it-works" className="relative z-10 border-y border-border/50 bg-card/30 backdrop-blur-sm">
+        <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
+          <div className="text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <Badge variant="secondary" className="mb-4">How It Works</Badge>
+              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+                Get started in minutes
+              </h2>
+              <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
+                Three simple steps to transform your clinical data into insights.
+              </p>
+            </motion.div>
           </div>
 
-        </section>
+          <div className="mt-16 grid gap-8 md:grid-cols-3">
+            {steps.map((step, index) => (
+              <motion.div
+                key={step.step}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.15 }}
+                className="relative"
+              >
+                <div className="text-6xl font-bold text-primary/20">{step.step}</div>
+                <h3 className="mt-4 text-xl font-semibold">{step.title}</h3>
+                <p className="mt-2 text-muted-foreground">{step.description}</p>
+                {index < steps.length - 1 && (
+                  <div className="absolute right-0 top-8 hidden h-px w-full bg-gradient-to-r from-border to-transparent md:block" />
+                )}
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-        {/* ================= CTA ================= */}
+      {/* CTA Section */}
+      <section className="relative z-10 mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="relative overflow-hidden rounded-3xl border border-border/50 bg-card/50 p-8 backdrop-blur-sm sm:p-12 md:p-16"
+        >
+          <div className="absolute inset-0 bg-grid opacity-20" />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-chart-2/10" />
+          
+          <div className="relative z-10 mx-auto max-w-2xl text-center">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+              Ready to transform your research?
+            </h2>
+            <p className="mt-4 text-muted-foreground">
+              Join hundreds of research institutions using OpenTrials to accelerate clinical discoveries.
+            </p>
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+              <Button size="lg" className="gap-2" asChild>
+                <Link href="/studies">
+                  Get Started Free
+                  <ArrowRight className="size-4" />
+                </Link>
+              </Button>
+              <Button size="lg" variant="outline" asChild>
+                <Link href="/dashboard">View Dashboard</Link>
+              </Button>
+            </div>
+            <div className="mt-6 flex items-center justify-center gap-6 text-sm text-muted-foreground">
+              <span className="flex items-center gap-1.5">
+                <CheckCircle className="size-4 text-success" />
+                No credit card required
+              </span>
+              <span className="flex items-center gap-1.5">
+                <CheckCircle className="size-4 text-success" />
+                14-day free trial
+              </span>
+            </div>
+          </div>
+        </motion.div>
+      </section>
 
-        <section className="text-center space-y-5">
-
-          <h2 className="
-            text-xl sm:text-2xl md:text-3xl
-            font-semibold
-          ">
-            Start Exploring Your Data
-          </h2>
-
-          <Link href="/studies">
-            <button className="
-              px-6 py-3 rounded-xl
-              bg-white/10 backdrop-blur-lg
-              border border-white/20
-              text-sm sm:text-base md:text-lg font-semibold
-              bg-gradient-to-r from-blue-400 via-cyan-300 to-purple-400
-              text-transparent bg-clip-text
-              hover:bg-white/20 transition
-            ">
-              Create Study
-            </button>
-          </Link>
-
-        </section>
-
-        {/* ================= FOOTER ================= */}
-
-        <footer className="text-center text-gray-500 text-xs sm:text-sm pt-6">
-          <p>OpenTrials Platform • Built by Aryan Lodha</p>
-        </footer>
-
-      </div>
-
+      {/* Footer */}
+      <footer className="relative z-10 border-t border-border/50">
+        <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+          <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
+            <div className="flex items-center gap-2">
+              <div className="flex size-6 items-center justify-center rounded bg-primary">
+                <Activity className="size-3 text-primary-foreground" />
+              </div>
+              <span className="text-sm font-medium">OpenTrials</span>
+            </div>
+            <p className="text-sm text-muted-foreground">
+              Built by Aryan Lodha. Open source clinical research platform.
+            </p>
+          </div>
+        </div>
+      </footer>
     </div>
-
   )
 }
