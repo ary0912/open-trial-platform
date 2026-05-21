@@ -1,0 +1,5 @@
+participant_id,gender,visit_date,blood_pressure,heart_rate,temperature
+1,Male,2025-01-01,122,76,36.6
+2,Female,2025-01-02,135,82,36.8
+3,Male,2025-01-03,118,70,36.5
+4,Female,2025-01-04,128,75,36.7
