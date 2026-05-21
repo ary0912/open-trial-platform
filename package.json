@@ -1,0 +1,12 @@
+{
+  "name": "open-trials-platform",
+  "version": "1.0.0",
+  "description": "Adaptive AI-native analytics platform for messy CSV datasets.",
+  "private": true,
+  "scripts": {
+    "dev": "npm run dev --prefix open-trials-platform/frontend/frontend",
+    "build": "npm run build --prefix open-trials-platform/frontend/frontend",
+    "start": "npm run start --prefix open-trials-platform/frontend/frontend",
+    "lint": "npm run lint --prefix open-trials-platform/frontend/frontend"
+  }
+}

@@ -1,0 +1,10 @@
+participant_id,visit_date,metric_name,value
+1,2025-01-01,blood_pressure,120
+1,2025-01-01,heart_rate,72
+1,2025-01-01,gender,Male
+2,2025-01-01,blood_pressure,115
+2,2025-01-01,heart_rate,70
+2,2025-01-01,gender,Female
+3,2025-01-02,blood_pressure,135
+3,2025-01-02,heart_rate,80
+3,2025-01-02,gender,Male
