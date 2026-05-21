@@ -1,5 +1,7 @@
 "use client"
 
+import { Suspense } from "react"
+
 import { useEffect, useMemo, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { useSearchParams } from "next/navigation"
@@ -39,7 +41,7 @@ import { StatsWidget } from "../../components/ui/stats-widget"
 
 const NAVBAR_HEIGHT = 64
 
-export default function Dashboard() {
+function DashboardContent() {
   const searchParams = useSearchParams()
 
   const studyIdParam = searchParams.get("studyId")
@@ -1186,5 +1188,25 @@ export default function Dashboard() {
       </AnimatePresence>
 
     </div>
+  )
+}
+
+export default function Dashboard() {
+  return (
+    <Suspense fallback={
+      <div className="flex min-h-screen items-center justify-center bg-[#f8fafc] dark:bg-[#09090b]">
+        <div className="flex flex-col items-center gap-5">
+          <div className="relative h-14 w-14">
+            <div className="absolute inset-0 rounded-full border-4 border-black/5 dark:border-white/5" />
+            <div className="absolute inset-0 animate-spin rounded-full border-4 border-transparent border-t-blue-500" />
+          </div>
+          <span className="text-sm font-medium uppercase tracking-[0.2em] text-slate-500">
+            Loading Intelligence
+          </span>
+        </div>
+      </div>
+    }>
+      <DashboardContent />
+    </Suspense>
   )
 }
