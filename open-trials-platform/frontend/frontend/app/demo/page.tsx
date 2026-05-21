@@ -1,7 +1,12 @@
 'use client';
 
 import React from 'react';
-import IncidentFunnelReportCard from '../../components/ui/layered-chart-xl';
+import dynamic from 'next/dynamic';
+
+const IncidentFunnelReportCard = dynamic(
+  () => import('../../components/ui/layered-chart-xl'),
+  { ssr: false, loading: () => <div className="w-full h-full animate-pulse bg-gray-100 dark:bg-gray-800 rounded-3xl" /> }
+);
 
 export default function IncidentFunnelReportCardDemo() {
   const [isDarkMode, setIsDarkMode] = React.useState(false);

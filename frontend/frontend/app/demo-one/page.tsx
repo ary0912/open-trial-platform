@@ -1,6 +1,11 @@
 'use client';
 
-import { Component } from "@/components/ui/stats-widget";
+import dynamic from 'next/dynamic';
+
+const Component = dynamic(
+  () => import('@/components/ui/stats-widget').then(m => ({ default: m.Component })),
+  { ssr: false, loading: () => <div className="w-full h-[400px] animate-pulse bg-gray-100 dark:bg-gray-800 rounded-3xl" /> }
+);
 
 export default function DemoOne() {
   return (

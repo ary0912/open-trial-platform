@@ -36,8 +36,17 @@ import {
   Zap
 } from "lucide-react"
 
-import IncidentFunnelReportCard from "../../components/ui/layered-chart-xl"
-import { StatsWidget } from "../../components/ui/stats-widget"
+import dynamic from "next/dynamic"
+
+const IncidentFunnelReportCard = dynamic(
+  () => import("../../components/ui/layered-chart-xl"),
+  { ssr: false, loading: () => <div className="h-full w-full animate-pulse rounded-3xl bg-slate-100 dark:bg-white/5" /> }
+)
+
+const StatsWidget = dynamic(
+  () => import("../../components/ui/stats-widget").then(m => ({ default: m.StatsWidget })),
+  { ssr: false }
+)
 
 const NAVBAR_HEIGHT = 64
 
